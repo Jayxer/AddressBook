@@ -5,10 +5,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   selector: 'app-root',
   templateUrl: './app.component.html'
 })  
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html'
-})
 
 export class AppComponent {
   title = 'AddressBook';

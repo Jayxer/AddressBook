@@ -1,0 +1,104 @@
+<div class="container">
+
+  <form [formGroup]="ContactsForm" (ngSubmit)="this[EventValue]()">
+
+    <h3>Address Book</h3>
+    <div class="row">
+      <table class="table">
+        <tr hidden="hidden">
+          <td></td>
+          <td>
+            <input type="hidden" formControlName="contactId">
+          </td>
+        </tr>
+        <tr>
+          <td>First Name</td>
+          <td>
+            <input type="text" formControlName="firstName" />
+            <div *ngIf="submitted && ContactsForm.controls.firstName.errors" class="text-danger">
+              <div *ngIf="ContactsForm.controls.firstName.errors.required">First Name is required</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Surname</td>
+          <td>
+            <input type="text" formControlName="surname" />
+            <div *ngIf="submitted && ContactsForm.controls.surname.errors" class="text-danger">
+              <div *ngIf="ContactsForm.controls.surname.errors.required">Surname is required</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Telephone</td>
+          <td>
+            <input type="text" formControlName="tel" />
+          </td>
+        </tr>
+        <tr>
+          <td>Cell Phone</td>
+          <td>
+            <input type="text" formControlName="cell" />
+          </td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td>
+            <input type="text" formControlName="email" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button type="submit" class="btn btn-primary">{{EventValue}}</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <h3>Contacts</h3>
+    <div class="row">
+      <table class="table">
+        <tr>
+          <td>
+            First Name:
+            <input type="text" formControlName="searchFirstName" />
+            Surname:
+            <input type="text" formControlName="searchSurname" />
+            Tel:
+            <input type="text" formControlName="searchTel" />
+          </td>
+          <td>
+            <a (click)="search()" class="btn">Search</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="row">
+      <table class="table table-striped">
+        <tr>
+          <td>Contact Id</td>
+          <td>First Name</td>
+          <td>Surname</td>
+          <td>Telephone</td>
+          <td>Cell Phone</td>
+          <td>Email</td>
+          <td>Edit</td>
+          <td>Delete</td>
+        </tr>
+
+        <tr *ngFor="let d of data">
+          <td>{{d.contactId}}</td>
+          <td>{{d.firstName}}</td>
+          <td>{{d.surname}}</td>
+          <td>{{d.tel}}</td>
+          <td>{{d.cell}}</td>
+          <td>{{d.email}}</td>
+          <td><a (click)="editData(d)" class="btn btn-warning">Edit</a></td>
+          <td><a (click)="deleteData(d.contactId)" class="btn btn-danger">Delete</a></td>
+        </tr>
+      </table>
+    </div>
+  </form>
+
+</div>
